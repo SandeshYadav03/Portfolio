@@ -22,7 +22,7 @@ const skillGroups = [
       { name: "React", level: 95, years: 3 },
       { name: "TypeScript", level: 90, years: 3 },
       { name: "Next.js", level: 85, years: 2 },
-      { name: "Tailwind CSS", level: 90, years: 2 },
+      { name: "TanStack Query", level: 90, years: 2 },
       { name: "Angular", level: 75, years: 1 },
     ],
     color: "emerald",

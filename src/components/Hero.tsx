@@ -90,7 +90,7 @@ export function Hero() {
     <motion.section
       ref={sectionRef}
       style={{ y, opacity }}
-      className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-x-hidden px-4 py-20 sm:px-6"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -131,7 +131,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto text-center">
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-6xl text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -149,7 +149,7 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-8"
+          className="mb-8 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 px-1 text-[clamp(1.875rem,8vw+0.25rem,3.5rem)] font-bold tracking-tight sm:gap-x-4 sm:text-7xl lg:text-8xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -157,14 +157,13 @@ export function Hero() {
           <span className="bg-gradient-to-r from-neutral-900 via-emerald-600 to-cyan-600 bg-clip-text text-transparent">
             Frontend
           </span>
-          {/* <br /> */}
-          <span className="bg-gradient-to-r from-emerald-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent ml-4">
+          <span className="bg-gradient-to-r from-emerald-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent">
             Engineer
           </span>
         </motion.h1>
 
         <motion.p
-          className="text-xl sm:text-2xl text-neutral-600 max-w-4xl mx-auto mb-12 leading-relaxed"
+          className="mx-auto mb-12 max-w-4xl px-2 text-lg leading-relaxed text-neutral-600 sm:text-xl md:text-2xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -179,7 +178,7 @@ export function Hero() {
         </motion.p>
 
         <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          className="mb-16 flex w-full min-w-0 flex-col items-stretch justify-center gap-4 px-1 sm:flex-row sm:flex-wrap sm:items-center"
           initial="hidden"
           animate="show"
           variants={{
@@ -188,6 +187,7 @@ export function Hero() {
           }}
         >
           <motion.div
+            className="w-full sm:w-auto"
             variants={{
               hidden: { opacity: 0, y: 20 },
               show: { opacity: 1, y: 0 },
@@ -195,7 +195,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="group"
+              className="group w-full sm:w-auto"
               type="button"
               onClick={() => smoothScroll("contact")}
             >
@@ -204,6 +204,7 @@ export function Hero() {
             </Button>
           </motion.div>
           <motion.div
+            className="w-full sm:w-auto"
             variants={{
               hidden: { opacity: 0, y: 20 },
               show: { opacity: 1, y: 0 },
@@ -212,7 +213,7 @@ export function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="group"
+              className="group w-full sm:w-auto"
               type="button"
               onClick={() => smoothScroll("projects")}
             >
@@ -224,7 +225,7 @@ export function Hero() {
 
         {/* Skills Showcase */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-20"
+          className="mx-auto mb-20 grid max-w-4xl grid-cols-1 gap-4 min-[420px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
           initial="hidden"
           animate="show"
           variants={{
@@ -242,7 +243,7 @@ export function Hero() {
               className="group relative"
             >
               <motion.div
-                className={`relative p-6 rounded-2xl bg-gradient-to-br ${skill.color} backdrop-blur-sm border border-white/20 text-white overflow-hidden`}
+                className={`relative rounded-2xl border border-white/20 bg-gradient-to-br ${skill.color} p-4 text-white backdrop-blur-sm overflow-hidden min-[420px]:p-6`}
                 whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >

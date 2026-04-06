@@ -3,6 +3,7 @@ const tools = [
   "React Native",
   "Next.js",
   "TypeScript",
+  "TanStack Query",
   "Tailwind",
   "Shadcn/UI",
   "Mantine",
