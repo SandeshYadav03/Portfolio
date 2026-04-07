@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+/* Enhanced CSS for smooth animations and modern effects */
+* {
+  cursor: none !important;
+}
+
+@media (max-width: 1024px) {
+  * {
+    cursor: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(16, 185, 129, 0.03) 0%,
+    transparent 70%
+  );
+}
+
+/* Glassmorphism support */
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Enhanced shadow effects */
+.neo-shadow {
+  box-shadow:
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}

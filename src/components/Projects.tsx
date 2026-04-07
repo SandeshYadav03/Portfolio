@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Eye, Filter, Briefcase } from "lucide-react";
+import { Eye, Filter, Briefcase, Zap } from "lucide-react";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
 const projects = [
@@ -450,31 +450,74 @@ function FeaturedProjectCard({
       className="group overflow-hidden w-full p-6 h-full"
     >
       <div className="relative h-full flex flex-col min-h-[180px]">
-        {/* Project Image Placeholder */}
+        {/* Enhanced Project Image */}
         <div
-          className={`h-32 rounded-lg mb-4 relative overflow-hidden flex-shrink-0 ${getGradientClasses(project.color)}`}
+          className={`h-36 rounded-xl mb-4 relative overflow-hidden flex-shrink-0 ${getGradientClasses(project.color)} shadow-2xl`}
         >
           <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-white/20"
+            className="absolute inset-0 bg-gradient-to-br from-transparent via-white/15 to-white/30"
             animate={
-              isHovered ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }
+              isHovered ? { scale: 1.15, rotate: 8 } : { scale: 1, rotate: 0 }
             }
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-3xl font-bold text-white/40">
+
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
+          >
+            <motion.div
+              className="text-4xl font-bold text-white/50 flex items-center gap-2"
+              animate={isHovered ? { y: [-2, 2, -2] } : {}}
+              transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
+            >
+              <Zap className="w-6 h-6" />
               {project.title
                 .split(" ")
                 .map((word) => word[0])
-                .join("")}{" "}
-            </div>
-          </div>
+                .join("")}
+            </motion.div>
+          </motion.div>
+
+          {/* Shimmer effect */}
+          <motion.div
+            className="absolute -inset-1 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0"
+            animate={
+              isHovered
+                ? {
+                    x: [-100, 400],
+                    opacity: [0, 1, 0],
+                  }
+                : {}
+            }
+            transition={{
+              duration: 1.5,
+              ease: "easeInOut",
+              repeat: isHovered ? Infinity : 0,
+              repeatDelay: 2,
+            }}
+            style={{ transform: "skewX(-12deg)" }}
+          />
+
           {project.featured && (
-            <div className="absolute top-2 right-2">
-              <div className="px-2 py-1 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-medium">
-                Featured
-              </div>
-            </div>
+            <motion.div
+              className="absolute top-3 right-3"
+              animate={{
+                scale: [1, 1.1, 1],
+                rotate: [0, 5, 0],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <motion.div
+                className="px-3 py-1 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-medium shadow-lg"
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: "0 8px 25px rgba(251, 191, 36, 0.4)",
+                }}
+              >
+                ⭐ Featured
+              </motion.div>
+            </motion.div>
           )}
         </div>
 
@@ -483,14 +526,12 @@ function FeaturedProjectCard({
             <h3 className="text-lg font-bold text-neutral-900 mb-1 group-hover:text-emerald-600 transition-colors">
               {project.title}
             </h3>
-            {/* <p className="text-neutral-600 leading-relaxed text-sm line-clamp-3"> */}
             <p className="text-neutral-600 leading-relaxed text-sm">
-              {/* {project.description.length > 140 ? `${project.description.substring(0, 140)}...` : project.description} */}
               {project.description}
             </p>
           </div>
 
-          {/* Project Details - More Compact */}
+          {/* Project Details */}
           <div className="grid grid-cols-2 gap-2 text-xs text-neutral-500 bg-neutral-50 rounded-md p-2">
             <div className="flex flex-col">
               <span className="font-medium text-neutral-700 text-xs">
@@ -517,23 +558,7 @@ function FeaturedProjectCard({
                 {tag}
               </span>
             ))}
-            {/* {project.tags.length > 4 && (
-              <span className="px-2 py-1 text-xs font-medium bg-neutral-100 text-neutral-600 rounded-full">
-                +{project.tags.length - 4}
-              </span>
-            )} */}
           </div>
-
-          {/* <div className="flex gap-2 mt-auto pt-3">
-            <Button size="sm" className="flex-1 group">
-              <ExternalLink className="w-3 h-3 mr-1 group-hover:rotate-12 transition-transform" />
-              Demo
-            </Button>
-            <Button variant="outline" size="sm" className="flex-1 group">
-              <ExternalLink className="w-3 h-3 mr-1 group-hover:scale-110 transition-transform" />
-              Code
-            </Button>
-          </div> */}
         </div>
       </div>
     </SpotlightCard>
@@ -563,7 +588,7 @@ function ProjectCard({
       className="group h-full p-6"
     >
       <div className="h-full flex flex-col min-h-[380px]">
-        {/* Project Image Placeholder */}
+        {/* Enhanced Project Image Placeholder */}
         <div
           className={`h-40 rounded-lg mb-4 relative overflow-hidden ${getGradientClasses(project.color)}`}
         >
@@ -587,9 +612,7 @@ function ProjectCard({
             <h3 className="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-emerald-600 transition-colors">
               {project.title}
             </h3>
-            {/* <p className="text-sm text-neutral-600 leading-relaxed line-clamp-3"> */}
             <p className="text-sm text-neutral-600 leading-relaxed">
-              {/* {project.description.length > 120 ? `${project.description.substring(0, 120)}...` : project.description} */}
               {project.description}
             </p>
           </div>
@@ -623,17 +646,6 @@ function ProjectCard({
               </span>
             )}
           </div>
-
-          {/* <div className="flex gap-2 mt-auto pt-4">
-            <Button size="sm" variant="outline" className="flex-1 group">
-              <ExternalLink className="w-3 h-3 mr-1 group-hover:rotate-12 transition-transform" />
-              Demo
-            </Button>
-            <Button size="sm" variant="ghost" className="flex-1 group">
-              <ExternalLink className="w-3 h-3 mr-1 group-hover:scale-110 transition-transform" />
-              Code
-            </Button>
-          </div> */}
         </div>
       </div>
     </SpotlightCard>
