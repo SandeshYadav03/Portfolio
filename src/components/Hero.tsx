@@ -149,7 +149,7 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          className="mb-8 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 px-1 text-[clamp(1.875rem,8vw+0.25rem,3.5rem)] font-bold tracking-tight sm:gap-x-4 sm:text-7xl lg:text-8xl"
+          className="mb-2 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 px-1 pb-2 text-[clamp(1.875rem,8vw+0.25rem,3.5rem)] font-bold leading-[1.12] tracking-tight sm:gap-x-4 sm:text-7xl lg:text-8xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -163,7 +163,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.p
-          className="mx-auto mb-12 max-w-4xl px-2 text-lg leading-relaxed text-neutral-600 sm:text-xl md:text-2xl"
+          className="mx-auto mb-8 max-w-4xl px-2 text-lg leading-relaxed text-neutral-600 sm:text-xl md:text-2xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -178,7 +178,7 @@ export function Hero() {
         </motion.p>
 
         <motion.div
-          className="mb-16 flex w-full min-w-0 flex-col items-stretch justify-center gap-4 px-1 sm:flex-row sm:flex-wrap sm:items-center"
+          className="mb-12 flex w-full min-w-0 flex-col items-stretch justify-center gap-4 px-1 sm:flex-row sm:flex-wrap sm:items-center"
           initial="hidden"
           animate="show"
           variants={{
