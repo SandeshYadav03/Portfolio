@@ -1,15 +1,6 @@
 @import "tailwindcss";
 
 /* Enhanced CSS for smooth animations and modern effects */
-* {
-  cursor: none !important;
-}
-
-@media (max-width: 1024px) {
-  * {
-    cursor: auto !important;
-  }
-}
 
 html {
   scroll-behavior: smooth;

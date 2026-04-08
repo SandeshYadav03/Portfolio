@@ -1,10 +1,4 @@
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState, useCallback } from "react";
 import {
   ChevronDown,
@@ -17,7 +11,6 @@ import {
   Layers,
   Cpu,
   Workflow,
-  Sparkles,
   Stars,
   Circle,
 } from "lucide-react";
@@ -122,13 +115,6 @@ const useTypewriter = (
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorVariant, setCursorVariant] = useState("default");
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springConfig = { damping: 25, stiffness: 700 };
-  const mouseXSpring = useSpring(mouseX, springConfig);
-  const mouseYSpring = useSpring(mouseY, springConfig);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -147,19 +133,14 @@ export function Hero() {
   ];
   const typewriterText = useTypewriter(roles, 100, 50, 1500);
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      mouseX.set(clientX - 16);
-      mouseY.set(clientY - 16);
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    const { clientX, clientY } = e;
 
-      setMousePosition({
-        x: (clientX - window.innerWidth / 2) * 0.015,
-        y: (clientY - window.innerHeight / 2) * 0.015,
-      });
-    },
-    [mouseX, mouseY],
-  );
+    setMousePosition({
+      x: (clientX - window.innerWidth / 2) * 0.015,
+      y: (clientY - window.innerHeight / 2) * 0.015,
+    });
+  }, []);
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
@@ -216,31 +197,6 @@ export function Hero() {
 
   return (
     <>
-      {/* Custom Cursor */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full mix-blend-difference pointer-events-none z-50 hidden lg:block"
-        style={{
-          x: mouseXSpring,
-          y: mouseYSpring,
-        }}
-        variants={{
-          default: {
-            scale: 1,
-            opacity: 0.7,
-          },
-          hover: {
-            scale: 1.5,
-            opacity: 1,
-          },
-        }}
-        animate={cursorVariant}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 28,
-        }}
-      />
-
       <motion.section
         ref={sectionRef}
         style={{ y, opacity, scale }}
@@ -309,16 +265,6 @@ export function Hero() {
           >
             <Circle className="w-full h-full text-cyan-400/30" />
           </motion.div>
-          <motion.div
-            className="absolute top-1/3 left-1/3 w-5 h-5"
-            animate={{
-              rotate: [0, -360],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          >
-            <Sparkles className="w-full h-full text-purple-400/50" />
-          </motion.div>
         </div>
 
         <div className="relative z-10 mx-auto w-full min-w-0 max-w-6xl text-center">
@@ -353,8 +299,6 @@ export function Hero() {
               scale: 1.02,
               transition: { duration: 0.2 },
             }}
-            onMouseEnter={() => setCursorVariant("hover")}
-            onMouseLeave={() => setCursorVariant("default")}
           >
             <motion.span
               className="bg-gradient-to-r from-neutral-900 via-emerald-600 to-cyan-600 bg-clip-text text-transparent"
@@ -399,8 +343,6 @@ export function Hero() {
               boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
               transition: { duration: 0.2 },
             }}
-            onMouseEnter={() => setCursorVariant("hover")}
-            onMouseLeave={() => setCursorVariant("default")}
           >
             Crafting exceptional digital experiences with{" "}
             <motion.span
@@ -518,8 +460,6 @@ export function Hero() {
                   style={{
                     transformStyle: "preserve-3d",
                   }}
-                  onMouseEnter={() => setCursorVariant("hover")}
-                  onMouseLeave={() => setCursorVariant("default")}
                 >
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -604,8 +544,6 @@ export function Hero() {
                 backgroundColor: "rgba(16, 185, 129, 0.1)",
                 borderColor: "rgba(16, 185, 129, 0.3)",
               }}
-              onMouseEnter={() => setCursorVariant("hover")}
-              onMouseLeave={() => setCursorVariant("default")}
             >
               <motion.span
                 className="text-sm mb-2 group-hover:text-emerald-600 transition-colors duration-300 font-medium"
